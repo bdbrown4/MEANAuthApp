@@ -8,14 +8,16 @@
     "start": "node app"
   },
   "dependencies": {
-    "express":"*",
-    "mongoose":"*",
-    "bcryptjs":"*",
-    "cors":"*",
-    "jsonwebtoken":"*",
+    "bcryptjs": "*",
     "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongodb": "^2.2.31",
+    "mongoose": "*",
     "passport": "*",
-    "passport-jwt":"*"
+    "passport-jwt": "*",
+    "socket.io": "*"
   },
   "author": "Ben Brown",
   "license": "ISC"
