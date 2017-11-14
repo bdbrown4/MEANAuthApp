@@ -6,7 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 3000;
 const server = app.listen(port, () => {
     console.log("Server started on port "+ port);
 });
@@ -35,9 +35,22 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //SocketIO initialization
+// Chat message sockets
 io.on("connection", (socket) => {
     socket.on('send-message', (data) => {
         io.emit('message-received',data);
+    });
+});
+//User typing socket
+io.on("connection", (socket) => {
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing-complete', (data));
+    });
+});
+//User typing socket kill the broadcast
+io.on("connection", (socket) => {
+    socket.on('kill-typing', (data) => {
+        socket.broadcast.emit('typing-killed', (data));
     });
 });
 

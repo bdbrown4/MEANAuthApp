@@ -11,7 +11,9 @@ router.post('/postChat', (req,res,next) => {
     let newChat = new Chat({
         name: req.body.name,
         username: req.body.username,
-        message: req.body.message
+        message: req.body.message,
+        timeZone: req.body.timeZone,
+        utcString: req.body.utcString
     });
 
     Chat.addChat(newChat, (err, chat) => {
@@ -28,7 +30,9 @@ router.get('/getInfo', (req,res,next) => {
     let newChat = new Chat({
         name: req.body.name,
         username: req.body.username,
-        message: req.body.message
+        message: req.body.message,
+        timeZone: req.body.timeZone,
+        gmtString: req.body.utcString
     });
 
     Chat.getChats(newChat,(err,chat)=>{

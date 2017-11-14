@@ -14,6 +14,14 @@ const ChatSchema = mongoose.Schema({
     message:{
         type: String,
         required: true
+    },
+    timeZone:{
+        type:String,
+        required: true
+    },
+    utcString:{
+        type:String,
+        required: true
     }
 });
 
